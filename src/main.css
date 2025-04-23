@@ -29,7 +29,7 @@
   }
 
   h2 {
-    @apply text-[2rem]/8;
+    @apply text-[2rem]/8 lg:text-[2.5rem]/10;
   }
 
   button {
