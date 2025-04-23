@@ -1,0 +1,9 @@
+# Avoid formating the following:
+node_modules
+parcel-cache
+dist
+style-guide.md
+pnpm-lock.yaml
+pnpm-workspace.yaml
+design
+images
