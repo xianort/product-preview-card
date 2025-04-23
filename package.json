@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A product preview card component.",
   "private": "true",
+  "source": "./src/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
