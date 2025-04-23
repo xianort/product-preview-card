@@ -4,7 +4,8 @@
   "description": "A product preview card component.",
   "private": "true",
   "scripts": {
-    "start": "parcel"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "keywords": [],
   "author": "xianort",
