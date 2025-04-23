@@ -9,6 +9,7 @@
   --color-cream: hsl(30, 38%, 92%);
   --color-white: hsl(0, 0%, 100%);
 
+  --font-*: initial;
   --font-sans: "Montserrat", sans-serif;
   --font-fraunces: "Fraunces", sans-serif;
 
