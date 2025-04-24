@@ -21,14 +21,14 @@ jobs:
       - run: ls
       - name: Install dependencies
         run: pnpm install
-      - run: ls ${{github.workspace}}
+      - run: ls
       - name: Build project
         run: pnpm run build
-      - run: ls ${{github.workspace}}
+      - run: ls
       - uses: actions/upload-pages-artifact@v3
         id: deployment
         with:
-          path: ${{github.workspace}}/dist/
+          path: ./dist/
   deploy:
     needs: build
 
@@ -36,12 +36,9 @@ jobs:
       pages: write
       id-token: write
 
-    environment:
-      name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
-
     runs-on: ubuntu-latest
     steps:
+      - run: ls
       - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v4
