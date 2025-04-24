@@ -2,7 +2,7 @@ name: Deploy
 on: push
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,3 +25,22 @@ jobs:
       - name: Build project
         run: pnpm run build
       - run: ls ${{github.workspace}}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{github.workspace}}/dist
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
