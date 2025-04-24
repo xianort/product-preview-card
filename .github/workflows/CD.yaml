@@ -26,8 +26,9 @@ jobs:
         run: pnpm run build
       - run: ls ${{github.workspace}}
       - uses: actions/upload-pages-artifact@v3
+        id: deployment
         with:
-          path: ${{github.workspace}}/dist
+          path: ${{github.workspace}}/dist/
   deploy:
     needs: build
 
