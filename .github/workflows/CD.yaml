@@ -1,6 +1,14 @@
 name: Deploy
-on: push
-
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ./src/**/*
+      - ./postcssrc.json
+      - ./.github/workflows/CD.yaml
+      - ./package.json
+      - ./pnpm-lock.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +26,6 @@ jobs:
         with:
           node-version: ${{matrix.node}}
           cache: pnpm
-      - run: ls ../
       - name: Install dependencies
         run: pnpm install
       - name: Build project
