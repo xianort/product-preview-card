@@ -4,11 +4,11 @@ on:
     branches:
       - main
     paths:
-      - ./src/**/*
-      - ./postcssrc.json
-      - ./.github/workflows/CD.yaml
-      - ./package.json
-      - ./pnpm-lock.yaml
+      - src/**/*
+      - postcssrc.json
+      - ".github/workflows/CD.yaml"
+      - package.json
+      - pnpm-lock.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
