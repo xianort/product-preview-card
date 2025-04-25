@@ -9,14 +9,6 @@ jobs:
         node: [22.x]
     env:
       PARCEL_WORKER_BACKEND: process
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
-
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
@@ -26,17 +18,26 @@ jobs:
         with:
           node-version: ${{matrix.node}}
           cache: pnpm
-      - run: ls
       - name: Install dependencies
         run: pnpm install
-      - run: ls
       - name: Build project
         run: pnpm run build
-      - run: ls
       - uses: actions/upload-pages-artifact@v3
+        id: deployment
         with:
           path: ./dist/
-      - run: ls
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
+    steps:
       - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v4
